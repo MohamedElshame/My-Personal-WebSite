@@ -9,7 +9,7 @@ import { LinkedInAnimation } from "./animations/LinkedInAnimation"
 import { TikTokAnimation } from "./animations/TikTokAnimation"
 
 export interface SocialButtonProps {
-  platform: "facebook" | "instagram" | "instagram2" | "github" | "linkedin" | "tiktok" | "medium"
+  platform: "facebook" | "instagram" | "instagram2" | "github" | "linkedin" | "tiktok" | "medium" | "letterboxd"
   icon: ReactNode
   url: string
   color: string
@@ -66,6 +66,12 @@ export function SocialButton({ platform, icon, url, color }: SocialButtonProps) 
           tapScale: 0.9,
           rotationRange: [-10, 10],
         }
+      case 'letterboxd':
+        return {
+          hoverScale: 1.1,
+          tapScale: 0.95,
+          rotationRange: [-4, 4],
+        }
       case 'medium':
         return {
           hoverScale: 1.1,
@@ -97,6 +103,46 @@ export function SocialButton({ platform, icon, url, color }: SocialButtonProps) 
         return <LinkedInAnimation onComplete={handleAnimationComplete} />
       case 'tiktok':
         return <TikTokAnimation onComplete={handleAnimationComplete} />
+      case 'letterboxd':
+        // Simple animation for Letterboxd
+        return (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            onAnimationComplete={handleAnimationComplete}
+          >
+            <motion.div 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }} 
+              className="text-white"
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  rotate: { repeat: 1, duration: 1 },
+                  scale: { repeat: 1, duration: 1 },
+                }}
+                className="rounded-xl p-2 bg-gray-800"
+              >
+                {icon}
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mt-4 text-xl font-bold text-center"
+              >
+                Opening Letterboxd...
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )
       case 'medium':
         // استخدام رسوم متحركة أبسط للمنصات التي ليس لديها مكون مخصص
         return (
