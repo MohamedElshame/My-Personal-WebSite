@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { FaFacebook, FaInstagram, FaGithub, FaLinkedin, FaTiktok, FaMedium } from "react-icons/fa"
+import { SiLetterboxd } from "react-icons/si"
 import { BackgroundAnimation } from "./components/BackgroundAnimation"
 import { SocialButton } from "./components/SocialButton"
 
@@ -29,13 +30,6 @@ export default function Home() {
       label: "Facebook",
     },
     {
-      platform: "instagram",
-      icon: <FaInstagram size={24} />,
-      url: "https://www.instagram.com/z3z3._/",
-      color: "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400",
-      label: "Instagram",
-    },
-    {
       platform: "instagram2",
       icon: <FaInstagram size={24} />,
       url: "https://www.instagram.com/labfloor/",
@@ -55,6 +49,13 @@ export default function Home() {
       url: "https://www.linkedin.com/in/mohamed-elshamy-64261b326/",
       color: "bg-blue-700",
       label: "LinkedIn",
+    },
+    {
+      platform: "letterboxd",
+      icon: <SiLetterboxd size={24} />,
+      url: "https://letterboxd.com/MohamedElshamy/",
+      color: "bg-green-600",
+      label: "Letterboxd",
     },
     {
       platform: "tiktok",
